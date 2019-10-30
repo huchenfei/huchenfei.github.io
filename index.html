@@ -280,6 +280,334 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/3.%20Nginx%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="huchenfei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CODE WORLD">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/30/3.%20Nginx%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/" itemprop="url">3. Nginx 负载均衡算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-30T14:38:17+08:00">
+                2019-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Nginx 支持的负载均衡调度算法方式如下：</p>
+</blockquote>
+<ol>
+<li>weight 轮询（默认）：接收到的请求按照顺序逐一分配到不同的后端服务器，即使在使用过程中，某一台后端服务器宕机，Nginx会自动将该服务器剔除出队列，请求受理情况不会受到任何影响。这种方式下，可以给不同的后端服务器设置一个权重值（weight），用于调整不同的服务器上请求的分配率。权重数据越大，被分配到请求的几率越大；该权重值，主要是针对实际工作环境中不同的后端服务器硬件配置进行调整的。</li>
+<li>ip_hash：每个请求按照发起客户端的 ip 的 hash 结果进行匹配，这样的算法下一个固定 ip 地址的客户端总会访问到同一个后端服务器，这也在一定程度上解决了集群部署环境下 Session 共享的问题。</li>
+<li>fair：智能调整调度算法，动态的根据后端服务器的请求处理到响应的时间进行均衡分配,响应时间短处理效率高的服务器分配到请求的概率高，响应时间长处理效率低的服务器分配到的请求少，它是结合了前两者的优点的一种调度算法。==但是需要注意的是 Nginx 默认不支持 fair 算法，如果要使用这种调度算法，请安装 upstream_fair 模块。==</li>
+<li>url_hash：按照访问的 URL 的 hash 结果分配请求，每个请求的 URL会指向后端固定的某个服务器，可以在 Nginx 作为静态服务器的情况下提高缓存效率。==同样要注意 Nginx默认不支持这种调度算法，要使用的话需要安装 Nginx 的 hash 软件包。==</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/1.%20%E5%88%9D%E6%8E%A2%20Nginx%20%E6%9E%B6%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="huchenfei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CODE WORLD">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/30/1.%20%E5%88%9D%E6%8E%A2%20Nginx%20%E6%9E%B6%E6%9E%84/" itemprop="url">1. 初探 Nginx 架构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-30T14:19:35+08:00">
+                2019-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>众所周知，Nginx 性能高，而 Nginx 的高性能与其架构是分不开的。那么 Nginx 究竟是怎么样的呢？</p>
+<pre><code>Nginx 在启动后，在 unix 系统中会以 ***守护进程*** 的方式在后台运行
+后台进程包含一个 master 进程和多个 worker 进程
+
+我们也可以手动地关掉后台模式，让 Nginx 在前台运行
+并且通过配置让 Nginx 取消 master 进程，从而可以使 Nginx 以单进程方式运行。
+
+很显然，生产环境下我们肯定不会这么做
+所以关闭后台模式，一般是用来调试用的</code></pre><hr>
+<pre><code>Nginx 是以多进程的方式来工作的，当然 Nginx 也是支持多线程的方式的
+我们主流的方式还是多进程的方式，也是 Nginx 的默认方式。
+
+Nginx 在启动后，会有一个 master 进程和多个 worker 进程。
+
+master进程主要用来管理 worker进程，包含：
+    1. 接收来自外界的信号
+    2. 向各 worker 进程发送信号
+    3. 监控 worker 进程的运行状态
+    4. 当 worker 进程退出后(异常情况下)，会自动重新启动新的 worker进程。
+
+基本的网络事件是放在 worker 进程中来处理；
+多个 worker 进程之间是对等的，他们同等竞争来自客户端的请求，各进程互相之间是独立的；
+一个请求，只可能在一个 worker 进程中处理，一个 worker 进程，不可能处理其它进程的请求；
+worker 进程的个数是可以设置的，一般我们会设置与机器cpu核数一致；</code></pre><hr>
+<blockquote>
+<p>Nginx 操作</p>
+</blockquote>
+<pre><code>要操作 Nginx，只需要与 master 进程通信就行了。
+master 进程会接收来自外界发来的信号，再根据信号做不同的
+事情。
+所以我们要控制 Nginx，只需要通过 kill 向 master 进程发送信号就行了。比如 
+
+# kill -HUP pid 
+
+则是告诉Nginx，从容地重启 Nginx
+我们一般用这个信号来重启Nginx，或重新加载配置,因为是从容地重启，因此服务是不中断的。</code></pre><p><strong>master 进程在接收到 HUP 信号后是怎么做的呢？</strong>    </p>
+<pre><code>首先 master 进程在接到信号后，会先重新加载配置文件
+然后再启动新的 worker 进程，并向所有老的 worker进程发送信号，告诉他们可以光荣退休了。
+新的 worker 在启动后，就开始接收新的请求
+而老的 worker 在收到来自 master 的信号后，就不再接收新的请求
+并且在当前进程中的所有未处理完的请求处理完成后，再退出。</code></pre><p><strong>当然，直接给 master 进程发送信号，这是比较老的操作方式</strong></p>
+<pre><code>Nginx 在 0.8 版本之后，引入了一系列命令行参数，来方便我们管理。
+比如
+
+重启 Nginx
+./nginx -s reload 
+
+停止 Nginx
+./nginx -s stop </code></pre><p><strong>如何做到的呢？</strong></p>
+<pre><code>我们还是拿reload 来说，我们看到，执行命令时，我们是启动一个新的 Nginx 进程
+而新的 Nginx 进程在解析到 reload参数后，就需要控制 Nginx 来重新加载配置文件
+它会向 master 进程发送信号，接下来的动作，就和我们直接向 master 进程发送信号一样了</code></pre><hr>
+<blockquote>
+<p>worker 进程如何处理请求</p>
+</blockquote>
+<p>我们前面有提到，worker进程之间是平等的，每个进程，处理请求的机会也是一样的。</p>
+<p><strong>当我们提供 80 端口的 http服务时一个连接请求过来，每个进程都有可能处理这个连接，怎么做到的呢？</strong></p>
+<pre><code>首先，每个 worker 进程都是从 master 进程 fork 过来的
+
+在 master 进程里面，先建立好需要 listen 的 socket（listenfd）之后，然后再 fork 出多个 worker 进程。
+所有 worker 进程的 listenfd 会在新连接到来时变得可读。
+
+为保证只有一个进程处理该连接，所有 worker 进程在注册 listenfd 读事件前抢 accept_mutex。
+抢到互斥锁的那个进程注册 listenfd 读事件，在读事件里调用 accept 接受该连接。
+
+当一个 worker 进程在 accept 这个连接之后，
+就开始读取请求，解析请求，处理请求，产生数据后，再返回给客户端，最后才断开连接。
+
+这样一个完整的请求就是这样的了。
+我们可以看到，一个请求，完全由 worker 进程来处理，而且只在一个 worker 进程中处理。</code></pre><hr>
+<p><strong>Nginx 采用这种进程模型有什么好处呢？</strong></p>
+<pre><code>首先，对于每个 worker 进程来说，独立的进程，不需要加锁，所以省掉了锁带来的开销
+
+其次，独立的进程互相不会影响，一个进程退出后其它进程还在工作，master 进程则很快启动新的 worker 进程</code></pre><hr>
+<p><strong>Nginx 是如何处理事件的</strong></p>
+<pre><code>Nginx 采用多 worker 的方式来处理请求
+每个 worker 里面只有一个主线程，那能够处理的并发数很有限啊，多少个 worker 就能处理多少个并发，何来高并发呢？
+
+Nginx 采用了异步非阻塞的方式来处理请求</code></pre><blockquote>
+<p>异步非阻塞</p>
+</blockquote>
+<pre><code>Nginx 入门指南pdf，P12</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -449,7 +777,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
