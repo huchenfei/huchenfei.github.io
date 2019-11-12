@@ -373,8 +373,7 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>count(1) 比 count(*) 效率高么</p>
 </blockquote>
 <p>有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件</p>
@@ -388,67 +387,13 @@
 <blockquote>
 <p>count的定义</p>
 </blockquote>
-<p>Returns a count of the number of non-NULL values of expr in the rows retrieved by a SELECT statement. The result is a BIGINT value.</p>
-<p>返回 SELECT 语句检索的行中 expr 的非 NULL 值的计数</p>
-<p>也就是说COUNT这个聚合函数，对 SELECT 的结果集进行计数，但是需要参数不为 NULL</p>
-<p>COUNT(*) is somewhat different in that it returns a count of the number of rows retrieved, whether or not they contain NULL values.</p>
-<p>count(<em>) 不同，他不关心这个返回值是否为空都会计算他的count，因为 count(1) 中的 1 是恒真表达式，那么 count(</em>) 还是 count(1) 都是对所有的结果集进行 count，所以他们本质上没有什么区别</p>
-<blockquote>
-<p>InnoDB的优化</p>
-</blockquote>
-<p>这个地方 InnoDB 本身也做了一些优化，它会使用最小的二级索引来进行 count 的查询优化。如果没有二级索引才会选择聚簇索引，这样的设计单从 IO 的角度就节省了很多开销</p>
-<p>count(column) 也是会遍历整张表，但是不同的是它会拿到 column 的值以后判断是否为空，然后再进行累加，那么如果针对主键需要解析内容，如果是二级索引所以需要再次根据主键获取内容，又是一次 IO 操作，所以 count(column) 的性能肯定不如前两者</p>
-<p>count(*)=count(1)&gt;count(primary key)&gt;count(column)</p>
-<p>count(*) 在查询上依赖于所有的数据集，我们也需要尽量的规避全量 count, 我们针对可预见的 count 查询做适当的缓存，可以是 Redis，也可以是独立的 MySQL count 表，当然无论是哪种方式我们都需要考虑一致性的问题。</p>
-<h4 id="文章中的其他衍生点"><a href="#文章中的其他衍生点" class="headerlink" title="文章中的其他衍生点"></a>文章中的其他衍生点</h4><blockquote>
-<p>什么是mvcc</p>
-</blockquote>
-<p>多版本并发控制，乐观锁的一种实现方式</p>
-<p>MVCC主要是为Repeatable-Read（可重复读）事务隔离级别做的，大多数情况下代替了行锁，实现了对读的非阻塞，读不加锁，读写不冲突。但是每行记录都需要额外的存储空间，需要做更多的行维护和检查工作</p>
-<p>MVCC 并发控制下的读事务一般使用==时间戳==或者事务 ID去标记当前读的数据库的状态。读写并存的时候，写操作会根据目前数据库的状态，创建一个新版本，并发的读则依旧访问旧版本的数据</p>
-<p>MVCC就是用 同一份数据临时保留多版本的方式 的方式，实现并发控制，保证一个读事务永远不会被阻塞</p>
-<p>innodb存储的最基本row中包含一些额外的存储信息，MVCC相关的有： DB_TRX_ID    ，DB_ROLL_PTR，DB_ROW_ID</p>
-<p>DB_TRX_ID 插入或更新行的最后一个事务的事务标识符</p>
-<p>DB_ROLL_PTR 写入回滚段的撤消日志记录，找之前版本的数据就是通过这个</p>
-<p>DB_ROW_ID 行标识.这个用于索引当中</p>
-<p>DB_TRX_ID记录了行的创建的时间</p>
-<p>在insert操作时， “创建时间”=DB_TRX_ID。“删除时间无”；</p>
-<p>在update操作时，复制新增行的“创建时间”=DB_TRX_ID，删除时间无，旧数据行“创建时间”不变，删除时间=该事务DB_TRX_ID；</p>
-<p>在delete操作时，相应数据行的“创建时间”不变，删除时间=该事务的DB_ROW_ID；</p>
-<p>在select操作时，对两者都不修改，只读相应的数据</p>
-<blockquote>
-<p>什么是最小二级索引</p>
-</blockquote>
-<p>二级索引是每个叶子节点中包含了不是主键的索引列，紧接着就是主键列的这种索引</p>
-<h5 id="为什么二级索引需要两次索引？"><a href="#为什么二级索引需要两次索引？" class="headerlink" title="为什么二级索引需要两次索引？"></a>为什么二级索引需要两次索引？</h5><p>二级索引的叶子节点保存的不是指向行的物理位置的指针，而是行的主键值，所以二级索引需要在查找一次聚簇索引。 </p>
-<h5 id="叶子节点存储主键值的目的："><a href="#叶子节点存储主键值的目的：" class="headerlink" title="叶子节点存储主键值的目的："></a>叶子节点存储主键值的目的：</h5><p>减少了当出现行移动或者数据分裂时二级索引的维护工作。使用主键值当作指针会让二级索引占用更多的空间，但换来在移动时无须更新二级索引中的主键指针。</p>
-<blockquote>
-<p>什么是聚簇索引</p>
-</blockquote>
-<p>InnoDB的聚簇索引实际上是在同一个结构中保存了B-Tree索引和数据行。 可以将聚簇索引理解为数据库中完整的一张数据表 </p>
-<p>每一个表都有一个聚簇索引，并且只有一个</p>
-<p>聚簇索引的优点： </p>
-<ul>
-<li>将相关数据保存在一起 </li>
-<li>数据访问速度更快 </li>
-<li>使用覆盖索引扫描的查询可以直接使用页节点中的主键值 </li>
-</ul>
-<p>聚簇索引的缺点： </p>
-<ul>
-<li>插入速度依赖插入顺序 </li>
-<li>使全表扫描速度变慢 </li>
-<li>更新聚簇索引列（主键）的代价很高 </li>
-</ul>
-<blockquote>
-<p>如何保证数据一致性</p>
-</blockquote>
-<p>分布式事务</p>
-<blockquote>
-<p>什么是分布式事务? 如何实现分布式事务?</p>
-</blockquote>
-<p>另起一片文章</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/12/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0COUNT()%E7%9A%84%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

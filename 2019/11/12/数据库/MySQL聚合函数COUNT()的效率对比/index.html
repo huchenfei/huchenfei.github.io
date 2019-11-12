@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="CODE WORLD">
 <meta property="og:description" content="count(1) 比 count(*) 效率高么  有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件 MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。 在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-12T11:04:35.463Z">
+<meta property="og:updated_time" content="2019-11-12T11:12:44.746Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -384,6 +384,7 @@
 <blockquote>
 <p>count的定义</p>
 </blockquote>
+<a id="more"></a>
 <p>Returns a count of the number of non-NULL values of expr in the rows retrieved by a SELECT statement. The result is a BIGINT value.</p>
 <p>返回 SELECT 语句检索的行中 expr 的非 NULL 值的计数</p>
 <p>也就是说COUNT这个聚合函数，对 SELECT 的结果集进行计数，但是需要参数不为 NULL</p>
