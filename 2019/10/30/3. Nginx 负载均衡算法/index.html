@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Nginx 支持的负载均衡调度算法方式如下：   weight 轮询（默认）：接收到的请求按照顺序逐一分配到不同的后端服务器，即使在使用过程中，某一台后端服务器宕机，Nginx会自动将该服务器剔除出队列，请求受理情况不会受到任何影响。这种方式下，可以给不同的后端服务器设置一个权重值（weight），用于调整不同的服务器上请求的分配率。权重数据越大，被分配到请求的几率越大；该权重值，主要是针对实际">
+<meta name="description" content="Nginx 支持的负载均衡调度算法方式如下：">
 <meta name="keywords" content="HCF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3. Nginx 负载均衡算法">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;3.%20Nginx%20%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="Nginx 支持的负载均衡调度算法方式如下：   weight 轮询（默认）：接收到的请求按照顺序逐一分配到不同的后端服务器，即使在使用过程中，某一台后端服务器宕机，Nginx会自动将该服务器剔除出队列，请求受理情况不会受到任何影响。这种方式下，可以给不同的后端服务器设置一个权重值（weight），用于调整不同的服务器上请求的分配率。权重数据越大，被分配到请求的几率越大；该权重值，主要是针对实际">
+<meta property="og:description" content="Nginx 支持的负载均衡调度算法方式如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T07:32:14.938Z">
+<meta property="og:updated_time" content="2019-11-12T11:18:06.279Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -373,6 +373,8 @@
         <blockquote>
 <p>Nginx 支持的负载均衡调度算法方式如下：</p>
 </blockquote>
+<a id="more"></a>
+
 <ol>
 <li>weight 轮询（默认）：接收到的请求按照顺序逐一分配到不同的后端服务器，即使在使用过程中，某一台后端服务器宕机，Nginx会自动将该服务器剔除出队列，请求受理情况不会受到任何影响。这种方式下，可以给不同的后端服务器设置一个权重值（weight），用于调整不同的服务器上请求的分配率。权重数据越大，被分配到请求的几率越大；该权重值，主要是针对实际工作环境中不同的后端服务器硬件配置进行调整的。</li>
 <li>ip_hash：每个请求按照发起客户端的 ip 的 hash 结果进行匹配，这样的算法下一个固定 ip 地址的客户端总会访问到同一个后端服务器，这也在一定程度上解决了集群部署环境下 Session 共享的问题。</li>
@@ -511,7 +513,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

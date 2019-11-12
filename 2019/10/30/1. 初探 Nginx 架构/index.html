@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="CODE WORLD">
 <meta property="og:description" content="众所周知，Nginx 性能高，而 Nginx 的高性能与其架构是分不开的。那么 Nginx 究竟是怎么样的呢？  Nginx 在启动后，在 unix 系统中会以 ***守护进程*** 的方式在后台运行 后台进程包含一个 master 进程和多个 worker 进程  我们也可以手动地关掉后台模式，让 Nginx 在前台运行 并且通过配置让 Nginx 取消 master 进程，从而可以使 Ngin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T07:31:28.370Z">
+<meta property="og:updated_time" content="2019-11-12T11:17:06.826Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -381,9 +381,8 @@ Nginx 在启动后，在 unix 系统中会以 ***守护进程*** 的方式在后
 很显然，生产环境下我们肯定不会这么做
 所以关闭后台模式，一般是用来调试用的</code></pre><hr>
 <pre><code>Nginx 是以多进程的方式来工作的，当然 Nginx 也是支持多线程的方式的
-我们主流的方式还是多进程的方式，也是 Nginx 的默认方式。
-
-Nginx 在启动后，会有一个 master 进程和多个 worker 进程。
+我们主流的方式还是多进程的方式，也是 Nginx 的默认方式。</code></pre><a id="more"></a>
+<pre><code>Nginx 在启动后，会有一个 master 进程和多个 worker 进程。
 
 master进程主要用来管理 worker进程，包含：
     1. 接收来自外界的信号
@@ -500,10 +499,6 @@ Nginx 采用了异步非阻塞的方式来处理请求</code></pre><blockquote>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/29/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -584,7 +579,7 @@ Nginx 采用了异步非阻塞的方式来处理请求</code></pre><blockquote>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
