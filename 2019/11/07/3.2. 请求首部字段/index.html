@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Accept 通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级  Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q=0.9,*&#x2F;*;q=0. 常用媒体类型   文本文件  123text&#x2F;html, text&#x2F;plain, text&#x2F;css ...application&#x2F;xhtml+xml, application&#x2F;x">
 <meta name="keywords" content="HCF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;29&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="HTTP请求首部字段详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;3.2.%20%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Accept 通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级  Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q=0.9,*&#x2F;*;q=0. 常用媒体类型   文本文件  123text&#x2F;html, text&#x2F;plain, text&#x2F;css ...application&#x2F;xhtml+xml, application&#x2F;x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T11:06:07.144Z">
+<meta property="og:updated_time" content="2019-11-07T02:28:05.344Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/29/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/3.2. 请求首部字段/"/>
 
 
 
 
 
-  <title>Hello World | CODE WORLD</title>
+  <title>HTTP请求首部字段详解 | CODE WORLD</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/3.2.%20%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huchenfei">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP请求首部字段详解</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T17:46:46+08:00">
-                2019-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T10:29:24+08:00">
+                2019-11-07
               </time>
             
 
@@ -333,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
                   </a>
                 </span>
 
@@ -370,20 +370,66 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>Accept 通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级</p>
+</blockquote>
+<pre><code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.</code></pre><blockquote>
+<p>常用媒体类型</p>
+</blockquote>
+<ul>
+<li>文本文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text/html, text/plain, text/css ...</span><br><span class="line"></span><br><span class="line">application/xhtml+xml, application/xml ...</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>图片文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image/jpeg, image/gif, image/png ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>视频文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">video/mpeg, video/quicktime ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>应用程序使用的二进制文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">application/octet-stream, application/zip</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>Accept-Charset 通知服务器用户代理支持的字符集及相对优先顺序</p>
+</blockquote>
+<pre><code>Accept-Charset: iso-8859-5, unicode-1-1;q=0</code></pre><hr>
+<blockquote>
+<p>Accept-Encoding 告知服务器用户代理支持的内容编码及优先级顺序</p>
+</blockquote>
+<pre><code>Accept-Encoding: gzip, defla</code></pre><hr>
+<blockquote>
+<p>Accept-Language 告知服务器用户代理能够处理的自然语言集和相对优先级</p>
+</blockquote>
+<pre><code>Accept-Language: zh-cn,zh;q=0.7,en-us,en;q=0</code></pre><hr>
+<blockquote>
+<p>Authorization 告知服务器用户代理的认证信息（证书值）</p>
+</blockquote>
+<pre><code>Authorization: Basic dWVub3NlbjpwYXNzd29yZA==</code></pre><hr>
+<blockquote>
+<p>Host 告知服务器请求的资源所处的互联网主机名和端口号</p>
+</blockquote>
+<pre><code>Host: www.hackr.hr</code></pre><hr>
+<blockquote>
+<p>Proxy-Authorization 告知服务器认证所需要的信息</p>
+</blockquote>
+<pre><code>Proxy-Authorization: Basic dGlwOjkpNLAGfF
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+这个行为是与客户端和服务器之间的 HTTP 访问认证相类似的，
+不同之处在于，认证行为发生在客户端与代理之间。
+客户端与服务器之间的认证，使用首部字段 Authorization 可起到相同作用。</code></pre><hr>
+<blockquote>
+<p>User-Agent 用于传达浏览器的种类</p>
+</blockquote>
+<pre><code>User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko/
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+User-Agent 会将创建请求的浏览器和用户代理名称等信息传达给服务器。
+如果请求经过代理，那么中间也很可能被添加上代理服务器的名称。</code></pre>
       
     </div>
     
@@ -431,14 +477,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/11/07/3.1.%20%E9%80%9A%E7%94%A8%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/" rel="next" title="HTTP通用首部字段详解">
+                <i class="fa fa-chevron-left"></i> HTTP通用首部字段详解
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/30/1.%20%E5%88%9D%E6%8E%A2%20Nginx%20%E6%9E%B6%E6%9E%84/" rel="prev" title="初探 Nginx 架构">
-                初探 Nginx 架构 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/07/3.3.%20%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/" rel="prev" title="HTTP实体首部字段详解">
+                HTTP实体首部字段详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,17 +541,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -566,22 +607,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

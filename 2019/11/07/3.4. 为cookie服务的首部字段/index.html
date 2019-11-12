@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Cookie 的工作机制是用户识别及状态管理。  Web 网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。  接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。  调用 Cookie 时，由于可校验 Cookie 的有效期，以及发送方的域、路径、协议等信息  所以正规发布的 Cookie 内的数据不会因来自其他Web站点和攻击者的攻击而泄露">
 <meta name="keywords" content="HCF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;29&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="HTTP为cookie服务的首部字段详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;3.4.%20%E4%B8%BAcookie%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Cookie 的工作机制是用户识别及状态管理。  Web 网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。  接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。  调用 Cookie 时，由于可校验 Cookie 的有效期，以及发送方的域、路径、协议等信息  所以正规发布的 Cookie 内的数据不会因来自其他Web站点和攻击者的攻击而泄露">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T11:06:07.144Z">
+<meta property="og:updated_time" content="2019-11-07T02:28:35.794Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/29/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/3.4. 为cookie服务的首部字段/"/>
 
 
 
 
 
-  <title>Hello World | CODE WORLD</title>
+  <title>HTTP为cookie服务的首部字段详解 | CODE WORLD</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/3.4.%20%E4%B8%BAcookie%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huchenfei">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP为cookie服务的首部字段详解</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T17:46:46+08:00">
-                2019-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T10:29:24+08:00">
+                2019-11-07
               </time>
             
 
@@ -333,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
                   </a>
                 </span>
 
@@ -370,20 +370,132 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>Cookie 的工作机制是用户识别及状态管理。</p>
+</blockquote>
+<pre><code>Web 网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+调用 Cookie 时，由于可校验 Cookie 的有效期，以及发送方的域、路径、协议等信息
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+所以正规发布的 Cookie 内的数据不会因来自其他Web站点和攻击者的攻击而泄露</code></pre><table>
+<thead>
+<tr>
+<th>为 Cookie 服务的首部字段</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>首部字段名</td>
+<td>说明</td>
+<td>首部类型</td>
+</tr>
+<tr>
+<td>Set-Cookie</td>
+<td>开始状态管理所使用的Cookie信息</td>
+<td>响应首部字段</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>服务器接收到的Cookie信息</td>
+<td>请求首部字段</td>
+</tr>
+</tbody></table>
+<blockquote>
+<h3 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a>Set-Cookie</h3></blockquote>
+<pre><code>Set-Cookie: status=enable; expires=Tue, 05 Jul 2011 07:26:31 GMT; path</code></pre><table>
+<thead>
+<tr>
+<th>Set-Cookie 字段的属性</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>NAME=VALUE</td>
+<td>赋予 Cookie 的名称和其值（必需项）</td>
+</tr>
+<tr>
+<td>expires=DATE</td>
+<td>Cookie 的有效期（若不明确指定则默认为浏览器关闭前为止）</td>
+</tr>
+<tr>
+<td>path=PATH</td>
+<td>将服务器上的文件目录作为Cookie的适用对象（若不指定则默认为文档所在的文件目录）</td>
+</tr>
+<tr>
+<td>domain=域名</td>
+<td>作为 Cookie 适用对象的域名 （若不指定则默认为创建 Cookie的服务器的域名）</td>
+</tr>
+<tr>
+<td>Secure</td>
+<td>仅在 HTTPS 安全通信时才会发送 Cookie</td>
+</tr>
+<tr>
+<td>HttpOnly</td>
+<td>加以限制，使 Cookie 不能被 JavaScript 脚本访问</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>expires 属性</p>
+</blockquote>
+<pre><code>Cookie 的 expires 属性指定浏览器可发送 Cookie 的有效期。
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+当省略 expires 属性时，其有效期仅限于维持浏览器会话（Session）时间段内。
 
+这通常限于浏览器应用程序被关闭之前。
+
+另外，一旦 Cookie 从服务器端发送至客户端，服务器端就不存在可以显式删除 Cookie 的方法。
+
+但可通过覆盖已过期的 Cookie，实现对客户端 Cookie 的实质性删除操作。</code></pre><blockquote>
+<p>path 属性</p>
+</blockquote>
+<pre><code>Cookie 的 path 属性可用于限制指定 Cookie 的发送范围的文件目录。</code></pre><blockquote>
+<p>domain 属性</p>
+</blockquote>
+<pre><code>通过 Cookie 的 domain 属性指定的域名可做到与结尾匹配一致。
+
+比如，当指定 example.com 后，除 example.com 以外，www.example.com 或 www2.example.com 等都可以发送 Cookie。
+
+因此，除了针对具体指定的多个域名发送 Cookie 之 外，不指定 domain 属性显得更安全。</code></pre><blockquote>
+<p>secure 属性</p>
+</blockquote>
+<pre><code>Cookie 的 secure 属性用于限制 Web 页面仅在 HTTPS 安全连接时，才
+可以发送 Cookie。
+
+发送 Cookie 时，指定 secure 属性的方法如下所示。
+
+Set-Cookie: name=value; secure
+
+以上例子仅当在 https://www.example.com/（HTTPS）安全连接的情况下才会进行 Cookie 的回收。
+也就是说，即使域名相同，http://www.example.com/（HTTP）也不会发生 Cookie 回收行为。
+当省略 secure 属性时，不论 HTTP 还是 HTTPS，都会对 Cookie 进行回收</code></pre><blockquote>
+<p>　HttpOnly 属性</p>
+</blockquote>
+<pre><code>Cookie 的 HttpOnly 属性是 Cookie 的扩展功能，它使 JavaScript 脚本无法获得 Cookie。
+
+其主要目的为防止跨站脚本攻击（Cross-sitescripting，XSS）对 Cookie 的信息窃取。
+
+发送指定 HttpOnly 属性的 Cookie 的方法如下所示。
+
+Set-Cookie: name=value; HttpOnly
+
+通过上述设置，通常从 Web 页面内还可以对 Cookie 进行读取操作。
+但使用 JavaScript 的 document.cookie 就无法读取附加 HttpOnly 属性后的 Cookie 的内容了。
+因此，也就无法在 XSS 中利用 JavaScript 劫持Cookie 了</code></pre><blockquote>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3></blockquote>
+<pre><code>Cookie: status=enable
+
+首部字段 Cookie 会告知服务器，当客户端想获得 HTTP 状态管理支持时，
+
+就会在请求中包含从服务器接收到的 Cookie。
+
+接收到多个Cookie 时，同样可以以多个 Cookie 形式发送。</code></pre>
       
     </div>
     
@@ -431,14 +543,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/11/07/3.3.%20%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/" rel="next" title="HTTP实体首部字段详解">
+                <i class="fa fa-chevron-left"></i> HTTP实体首部字段详解
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/30/1.%20%E5%88%9D%E6%8E%A2%20Nginx%20%E6%9E%B6%E6%9E%84/" rel="prev" title="初探 Nginx 架构">
-                初探 Nginx 架构 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/07/4.%20HTTPS/" rel="prev" title="HTTPS详解">
+                HTTPS详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -576,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Cookie"><span class="nav-number">1.</span> <span class="nav-text">Set-Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">2.</span> <span class="nav-text">Cookie</span></a></li></ol></div>
             
 
           </div>

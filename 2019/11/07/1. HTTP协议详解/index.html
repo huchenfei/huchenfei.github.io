@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="HTTP协议用于客户端和服务端之间的通信 请求文本或者图像等资源的一方为客户端，而提供资源响应的一方为服务端 客户端和服务端的通信使用过请求和响应的交换来达成的  HTTP是无状态协议  HTTP 是一种不保存状态，即无状态（stateless）协议。HTTP 协议自身不对请求和响应之间的通信状态进行保存。也就是说在 HTTP 这个级别，协议对于发送过的请求或响应都不做持久化处理。  HTTP方法">
 <meta name="keywords" content="HCF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;29&#x2F;hello-world&#x2F;index.html">
+<meta property="og:title" content="HTTP协议详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;1.%20HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="HTTP协议用于客户端和服务端之间的通信 请求文本或者图像等资源的一方为客户端，而提供资源响应的一方为服务端 客户端和服务端的通信使用过请求和响应的交换来达成的  HTTP是无状态协议  HTTP 是一种不保存状态，即无状态（stateless）协议。HTTP 协议自身不对请求和响应之间的通信状态进行保存。也就是说在 HTTP 这个级别，协议对于发送过的请求或响应都不做持久化处理。  HTTP方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T11:06:07.144Z">
+<meta property="og:updated_time" content="2019-11-07T02:26:49.695Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/29/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/1. HTTP协议详解/"/>
 
 
 
 
 
-  <title>Hello World | CODE WORLD</title>
+  <title>HTTP协议详解 | CODE WORLD</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/1.%20HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huchenfei">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP协议详解</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T17:46:46+08:00">
-                2019-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T10:29:23+08:00">
+                2019-11-07
               </time>
             
 
@@ -333,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
                   </a>
                 </span>
 
@@ -370,20 +370,48 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>HTTP协议用于客户端和服务端之间的通信</p>
+<p>请求文本或者图像等资源的一方为客户端，而提供资源响应的一方为服务端</p>
+<p>客户端和服务端的通信使用过请求和响应的交换来达成的</p>
+<blockquote>
+<p>HTTP是无状态协议</p>
+</blockquote>
+<p>HTTP 是一种不保存状态，即无状态（stateless）协议。HTTP 协议自身不对请求和响应之间的通信状态进行保存。也就是说在 HTTP 这个级别，协议对于发送过的请求或响应都不做持久化处理。</p>
+<blockquote>
+<p>HTTP方法</p>
+</blockquote>
+<ul>
+<li>GET：获取资源</li>
+<li>POST：传输实体主体：<br>  虽然用 GET 方法也可以传输实体的主体，但一般不用 GET 方法进行传输，而是用 POST 方法。虽说 POST 的功能与 GET 很相似，但<br>POST 的主要目的并不是获取响应的主体内容</li>
+<li>PUT：传输文件：鉴于 HTTP/1.1 的 PUT 方法自身不带验证机制，任何人都可以<br>上传文件 , 存在安全性问题，因此一般的 Web 网站不使用该方法。</li>
+<li>HEAD：获得报文首部</li>
+<li>DELETE：删除文件： DELETE 方法本身和 PUT 方法一样不带验证机<br>制，所以一般的 Web 网站也不使用 DELETE 方法。</li>
+<li>OPTIONS：询问支持的方法</li>
+<li>TRACE：追踪路径</li>
+<li>CONNECT：要求用隧道协议连接代理</li>
+</ul>
+<p>==正常项目中一般我们都仅仅使用了GET和POST==</p>
+<blockquote>
+<p>持久化连接</p>
+</blockquote>
+<p><strong>持久连接旨在建立 1 次 TCP 连接后进行多次请求和响应的交互</strong></p>
+<p>HTTP 协议的初始版本中，每进行一次 HTTP 通信就要断开一次 TCP连接。这无疑是增加了通信开销</p>
+<p>为解决 TCP 连接的问题，HTTP/1.1 和一部分的 HTTP/1.0 想出了持久连接的方法。持久连接的特点是，只要任意一端没有明确提出断开连接，则保持 TCP 连接状态。</p>
+<p>持久连接的好处在于减少了 TCP 连接的重复建立和断开所造成的额外开销，减轻了服务器端的负载。另外，减少开销的那部分时间，使HTTP 请求和响应能够更早地结束，这样 Web 页面的显示速度也就相应提高了。</p>
+<p>在 HTTP/1.1 中，所有的连接默认都是持久连接，但在 HTTP/1.0 内并未标准化。虽然有一部分服务器通过非标准的手段实现了持久连接，但服务器端不一定能够支持持久连接。毫无疑问，除了服务器端，客户端也需要支持持久连接。</p>
+<blockquote>
+<p>使用 Cookie 的状态管理</p>
+</blockquote>
+<p>HTTP 是无状态协议，它不对之前发生过的请求和响应的状态进行管理。也就是说，无法根据之前的状态进行本次的请求处理。</p>
+<p>假设要求登录认证的 Web 页面本身无法进行状态的管理（不记录已登录的状态），那么每次跳转新页面不是要再次登录，就是要在每次请求报文中附加参数来管理登录状态。</p>
+<p>不可否认，无状态协议当然也有它的优点。由于不必保存状态，自然可减少服务器的 CPU 及内存资源的消耗。从另一侧面来说，也正是因为 HTTP协议本身是非常简单的，所以才会被应用在各种场景里。</p>
+<p>Cookie 技术通过在请求和响应报文中写入 Cookie 信息来控制客户端的状态。</p>
+<p>Cookie 会根据从服务器端发送的响应报文内的一个叫做 Set-Cookie 的首部字段信息，通知客户端保存 Cookie。当下次客户端再往该服务器发送请求时，客户端会自动在请求报文中加入 Cookie值后发送出去。</p>
+<p>服务器端发现客户端发送过来的 Cookie 后，会去检查究竟是从哪一个客户端发来的连接请求，然后对比服务器上的记录，最后得之前的状态信息。</p>
+<pre><code>=
+=
+=
+=</code></pre>
       
     </div>
     
@@ -431,14 +459,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/11/07/0.%20%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80TCP%20IP/" rel="next" title="网络基础TCP/IP">
+                <i class="fa fa-chevron-left"></i> 网络基础TCP/IP
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/30/1.%20%E5%88%9D%E6%8E%A2%20Nginx%20%E6%9E%B6%E6%9E%84/" rel="prev" title="初探 Nginx 架构">
-                初探 Nginx 架构 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/07/2.%20HTTP%20%E7%8A%B6%E6%80%81%E7%A0%81/" rel="prev" title="HTTP状态码详解">
+                HTTP状态码详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,17 +523,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -566,22 +589,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
