@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="count(1) 比 count(*) 效率高么  有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件 MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。 在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时">
+<meta name="description" content="Cookie 的工作机制是用户识别及状态管理。  Web 网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。  接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。  调用 Cookie 时，由于可校验 Cookie 的有效期，以及发送方的域、路径、协议等信息  所以正规发布的 Cookie 内的数据不会因来自其他Web站点和攻击者的攻击而泄露">
 <meta name="keywords" content="HCF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL聚合函数COUNT()的效率对比">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;MySQL%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0COUNT()%E7%9A%84%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94&#x2F;index.html">
+<meta property="og:title" content="HTTP为cookie服务的首部字段详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;HTTP&#x2F;3.4.%20%E4%B8%BAcookie%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="count(1) 比 count(*) 效率高么  有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件 MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。 在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时">
+<meta property="og:description" content="Cookie 的工作机制是用户识别及状态管理。  Web 网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。  接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。  调用 Cookie 时，由于可校验 Cookie 的有效期，以及发送方的域、路径、协议等信息  所以正规发布的 Cookie 内的数据不会因来自其他Web站点和攻击者的攻击而泄露">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-12T11:12:44.746Z">
+<meta property="og:updated_time" content="2019-11-12T11:19:51.883Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/12/数据库/MySQL聚合函数COUNT()的效率对比/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/HTTP/3.4. 为cookie服务的首部字段/"/>
 
 
 
 
 
-  <title>MySQL聚合函数COUNT()的效率对比 | CODE WORLD</title>
+  <title>HTTP为cookie服务的首部字段详解 | CODE WORLD</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0COUNT()%E7%9A%84%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/HTTP/3.4.%20%E4%B8%BAcookie%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huchenfei">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL聚合函数COUNT()的效率对比</h1>
+          <h1 class="post-title" itemprop="name headline">HTTP为cookie服务的首部字段详解</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-12T19:01:16+08:00">
-                2019-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T10:29:24+08:00">
+                2019-11-07
               </time>
             
 
@@ -333,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
                   </a>
                 </span>
 
@@ -371,80 +371,132 @@
 
       
         <blockquote>
-<p>count(1) 比 count(*) 效率高么</p>
+<p>Cookie 的工作机制是用户识别及状态管理。</p>
 </blockquote>
-<p>有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件</p>
-<p>MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。</p>
-<p>在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时有多个事务访问数据并且有更新操作的时候，每个事务需要维护自己的可见性，那么每个事务查询到的行数也是不同的，所以不能缓存具体的行数，他每次都需要 count 一下所有的行数。</p>
-<blockquote>
-<p>官方解释</p>
-</blockquote>
-<p>InnoDB handles SELECT COUNT(*) and SELECT COUNT(1) operations in the same way. There is no performance difference.</p>
-<p>InnoDB 处理 SELECT COUNT(*) 和 SELECT COUNT(1) 使用荣阳的操作方式,两者没有实质性的区别</p>
-<blockquote>
-<p>count的定义</p>
-</blockquote>
-<a id="more"></a>
-<p>Returns a count of the number of non-NULL values of expr in the rows retrieved by a SELECT statement. The result is a BIGINT value.</p>
-<p>返回 SELECT 语句检索的行中 expr 的非 NULL 值的计数</p>
-<p>也就是说COUNT这个聚合函数，对 SELECT 的结果集进行计数，但是需要参数不为 NULL</p>
-<p>COUNT(*) is somewhat different in that it returns a count of the number of rows retrieved, whether or not they contain NULL values.</p>
-<p>count(<em>) 不同，他不关心这个返回值是否为空都会计算他的count，因为 count(1) 中的 1 是恒真表达式，那么 count(</em>) 还是 count(1) 都是对所有的结果集进行 count，所以他们本质上没有什么区别</p>
-<blockquote>
-<p>InnoDB的优化</p>
-</blockquote>
-<p>这个地方 InnoDB 本身也做了一些优化，它会使用最小的二级索引来进行 count 的查询优化。如果没有二级索引才会选择聚簇索引，这样的设计单从 IO 的角度就节省了很多开销</p>
-<p>count(column) 也是会遍历整张表，但是不同的是它会拿到 column 的值以后判断是否为空，然后再进行累加，那么如果针对主键需要解析内容，如果是二级索引所以需要再次根据主键获取内容，又是一次 IO 操作，所以 count(column) 的性能肯定不如前两者</p>
-<p>count(*)=count(1)&gt;count(primary key)&gt;count(column)</p>
-<p>count(*) 在查询上依赖于所有的数据集，我们也需要尽量的规避全量 count, 我们针对可预见的 count 查询做适当的缓存，可以是 Redis，也可以是独立的 MySQL count 表，当然无论是哪种方式我们都需要考虑一致性的问题。</p>
-<h4 id="文章中的其他衍生点"><a href="#文章中的其他衍生点" class="headerlink" title="文章中的其他衍生点"></a>文章中的其他衍生点</h4><blockquote>
-<p>什么是mvcc</p>
-</blockquote>
-<p>多版本并发控制，乐观锁的一种实现方式</p>
-<p>MVCC主要是为Repeatable-Read（可重复读）事务隔离级别做的，大多数情况下代替了行锁，实现了对读的非阻塞，读不加锁，读写不冲突。但是每行记录都需要额外的存储空间，需要做更多的行维护和检查工作</p>
-<p>MVCC 并发控制下的读事务一般使用==时间戳==或者事务 ID去标记当前读的数据库的状态。读写并存的时候，写操作会根据目前数据库的状态，创建一个新版本，并发的读则依旧访问旧版本的数据</p>
-<p>MVCC就是用 同一份数据临时保留多版本的方式 的方式，实现并发控制，保证一个读事务永远不会被阻塞</p>
-<p>innodb存储的最基本row中包含一些额外的存储信息，MVCC相关的有： DB_TRX_ID    ，DB_ROLL_PTR，DB_ROW_ID</p>
-<p>DB_TRX_ID 插入或更新行的最后一个事务的事务标识符</p>
-<p>DB_ROLL_PTR 写入回滚段的撤消日志记录，找之前版本的数据就是通过这个</p>
-<p>DB_ROW_ID 行标识.这个用于索引当中</p>
-<p>DB_TRX_ID记录了行的创建的时间</p>
-<p>在insert操作时， “创建时间”=DB_TRX_ID。“删除时间无”；</p>
-<p>在update操作时，复制新增行的“创建时间”=DB_TRX_ID，删除时间无，旧数据行“创建时间”不变，删除时间=该事务DB_TRX_ID；</p>
-<p>在delete操作时，相应数据行的“创建时间”不变，删除时间=该事务的DB_ROW_ID；</p>
-<p>在select操作时，对两者都不修改，只读相应的数据</p>
-<blockquote>
-<p>什么是最小二级索引</p>
-</blockquote>
-<p>二级索引是每个叶子节点中包含了不是主键的索引列，紧接着就是主键列的这种索引</p>
-<h5 id="为什么二级索引需要两次索引？"><a href="#为什么二级索引需要两次索引？" class="headerlink" title="为什么二级索引需要两次索引？"></a>为什么二级索引需要两次索引？</h5><p>二级索引的叶子节点保存的不是指向行的物理位置的指针，而是行的主键值，所以二级索引需要在查找一次聚簇索引。 </p>
-<h5 id="叶子节点存储主键值的目的："><a href="#叶子节点存储主键值的目的：" class="headerlink" title="叶子节点存储主键值的目的："></a>叶子节点存储主键值的目的：</h5><p>减少了当出现行移动或者数据分裂时二级索引的维护工作。使用主键值当作指针会让二级索引占用更多的空间，但换来在移动时无须更新二级索引中的主键指针。</p>
-<blockquote>
-<p>什么是聚簇索引</p>
-</blockquote>
-<p>InnoDB的聚簇索引实际上是在同一个结构中保存了B-Tree索引和数据行。 可以将聚簇索引理解为数据库中完整的一张数据表 </p>
-<p>每一个表都有一个聚簇索引，并且只有一个</p>
-<p>聚簇索引的优点： </p>
-<ul>
-<li>将相关数据保存在一起 </li>
-<li>数据访问速度更快 </li>
-<li>使用覆盖索引扫描的查询可以直接使用页节点中的主键值 </li>
-</ul>
-<p>聚簇索引的缺点： </p>
-<ul>
-<li>插入速度依赖插入顺序 </li>
-<li>使全表扫描速度变慢 </li>
-<li>更新聚簇索引列（主键）的代价很高 </li>
-</ul>
-<blockquote>
-<p>如何保证数据一致性</p>
-</blockquote>
-<p>分布式事务</p>
-<blockquote>
-<p>什么是分布式事务? 如何实现分布式事务?</p>
-</blockquote>
-<p>另起一片文章</p>
+<pre><code>Web 网站为了管理用户的状态会通过Web浏览器，把一些数据临时写入用户的计算机内。
 
+接着当用户访问该Web网站时，可通过通信方式取回之前发放的Cookie。
+
+调用 Cookie 时，由于可校验 Cookie 的有效期，以及发送方的域、路径、协议等信息
+
+所以正规发布的 Cookie 内的数据不会因来自其他Web站点和攻击者的攻击而泄露</code></pre><a id="more"></a>    
+<table>
+<thead>
+<tr>
+<th>为 Cookie 服务的首部字段</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>首部字段名</td>
+<td>说明</td>
+<td>首部类型</td>
+</tr>
+<tr>
+<td>Set-Cookie</td>
+<td>开始状态管理所使用的Cookie信息</td>
+<td>响应首部字段</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>服务器接收到的Cookie信息</td>
+<td>请求首部字段</td>
+</tr>
+</tbody></table>
+<blockquote>
+<h3 id="Set-Cookie"><a href="#Set-Cookie" class="headerlink" title="Set-Cookie"></a>Set-Cookie</h3></blockquote>
+<pre><code>Set-Cookie: status=enable; expires=Tue, 05 Jul 2011 07:26:31 GMT; path</code></pre><table>
+<thead>
+<tr>
+<th>Set-Cookie 字段的属性</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>属性</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>NAME=VALUE</td>
+<td>赋予 Cookie 的名称和其值（必需项）</td>
+</tr>
+<tr>
+<td>expires=DATE</td>
+<td>Cookie 的有效期（若不明确指定则默认为浏览器关闭前为止）</td>
+</tr>
+<tr>
+<td>path=PATH</td>
+<td>将服务器上的文件目录作为Cookie的适用对象（若不指定则默认为文档所在的文件目录）</td>
+</tr>
+<tr>
+<td>domain=域名</td>
+<td>作为 Cookie 适用对象的域名 （若不指定则默认为创建 Cookie的服务器的域名）</td>
+</tr>
+<tr>
+<td>Secure</td>
+<td>仅在 HTTPS 安全通信时才会发送 Cookie</td>
+</tr>
+<tr>
+<td>HttpOnly</td>
+<td>加以限制，使 Cookie 不能被 JavaScript 脚本访问</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>expires 属性</p>
+</blockquote>
+<pre><code>Cookie 的 expires 属性指定浏览器可发送 Cookie 的有效期。
+
+当省略 expires 属性时，其有效期仅限于维持浏览器会话（Session）时间段内。
+
+这通常限于浏览器应用程序被关闭之前。
+
+另外，一旦 Cookie 从服务器端发送至客户端，服务器端就不存在可以显式删除 Cookie 的方法。
+
+但可通过覆盖已过期的 Cookie，实现对客户端 Cookie 的实质性删除操作。</code></pre><blockquote>
+<p>path 属性</p>
+</blockquote>
+<pre><code>Cookie 的 path 属性可用于限制指定 Cookie 的发送范围的文件目录。</code></pre><blockquote>
+<p>domain 属性</p>
+</blockquote>
+<pre><code>通过 Cookie 的 domain 属性指定的域名可做到与结尾匹配一致。
+
+比如，当指定 example.com 后，除 example.com 以外，www.example.com 或 www2.example.com 等都可以发送 Cookie。
+
+因此，除了针对具体指定的多个域名发送 Cookie 之 外，不指定 domain 属性显得更安全。</code></pre><blockquote>
+<p>secure 属性</p>
+</blockquote>
+<pre><code>Cookie 的 secure 属性用于限制 Web 页面仅在 HTTPS 安全连接时，才
+可以发送 Cookie。
+
+发送 Cookie 时，指定 secure 属性的方法如下所示。
+
+Set-Cookie: name=value; secure
+
+以上例子仅当在 https://www.example.com/（HTTPS）安全连接的情况下才会进行 Cookie 的回收。
+也就是说，即使域名相同，http://www.example.com/（HTTP）也不会发生 Cookie 回收行为。
+当省略 secure 属性时，不论 HTTP 还是 HTTPS，都会对 Cookie 进行回收</code></pre><blockquote>
+<p>　HttpOnly 属性</p>
+</blockquote>
+<pre><code>Cookie 的 HttpOnly 属性是 Cookie 的扩展功能，它使 JavaScript 脚本无法获得 Cookie。
+
+其主要目的为防止跨站脚本攻击（Cross-sitescripting，XSS）对 Cookie 的信息窃取。
+
+发送指定 HttpOnly 属性的 Cookie 的方法如下所示。
+
+Set-Cookie: name=value; HttpOnly
+
+通过上述设置，通常从 Web 页面内还可以对 Cookie 进行读取操作。
+但使用 JavaScript 的 document.cookie 就无法读取附加 HttpOnly 属性后的 Cookie 的内容了。
+因此，也就无法在 XSS 中利用 JavaScript 劫持Cookie 了</code></pre><blockquote>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3></blockquote>
+<pre><code>Cookie: status=enable
+
+首部字段 Cookie 会告知服务器，当客户端想获得 HTTP 状态管理支持时，
+
+就会在请求中包含从服务器接收到的 Cookie。
+
+接收到多个Cookie 时，同样可以以多个 Cookie 形式发送。</code></pre>
       
     </div>
     
@@ -502,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/07/HTTP/5.%20%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" rel="next" title="HTTP用户身份认证详解">
-                <i class="fa fa-chevron-left"></i> HTTP用户身份认证详解
+              <a href="/2019/11/07/HTTP/3.3.%20%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/" rel="next" title="HTTP实体首部字段详解">
+                <i class="fa fa-chevron-left"></i> HTTP实体首部字段详解
               </a>
             
           </div>
@@ -512,8 +564,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/06/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/IntelliJ%20IDEA%202019.3%E6%B3%A8%E5%86%8C%E7%A0%81%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%8C%E5%8F%AF%E6%BF%80%E6%B4%BB%E8%87%B3%202089%20%E5%B9%B4%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0~%EF%BC%89/" rel="prev" title="IntelliJ IDEA 2019.3注册码（亲测有效，可激活至 2089 年，持续更新~）">
-                IntelliJ IDEA 2019.3注册码（亲测有效，可激活至 2089 年，持续更新~） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/07/HTTP/4.%20HTTPS/" rel="prev" title="HTTPS详解">
+                HTTPS详解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -651,7 +703,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章中的其他衍生点"><span class="nav-number">1.</span> <span class="nav-text">文章中的其他衍生点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么二级索引需要两次索引？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么二级索引需要两次索引？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#叶子节点存储主键值的目的："><span class="nav-number">1.2.</span> <span class="nav-text">叶子节点存储主键值的目的：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Cookie"><span class="nav-number">1.</span> <span class="nav-text">Set-Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie"><span class="nav-number">2.</span> <span class="nav-text">Cookie</span></a></li></ol></div>
             
 
           </div>

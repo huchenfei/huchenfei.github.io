@@ -79,14 +79,15 @@
 
 
 
-<meta name="description" content="YOU WANT! YOU GET!">
+<meta name="description" content="Allow 通知客户端能够支持 Request-URI 指定资源的所有 HTTP 方法  当服务器接收到不支持的 HTTP 方法时 会以状态码405 Method Not Allowed 作为响应返回 还会把所有能支持的 HTTP 方法写入首部字段 Allow 后返回">
 <meta name="keywords" content="HCF">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CODE WORLD">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;11&#x2F;page&#x2F;2&#x2F;index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP实体首部字段详解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;HTTP&#x2F;3.3.%20%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="YOU WANT! YOU GET!">
+<meta property="og:description" content="Allow 通知客户端能够支持 Request-URI 指定资源的所有 HTTP 方法  当服务器接收到不支持的 HTTP 方法时 会以状态码405 Method Not Allowed 作为响应返回 还会把所有能支持的 HTTP 方法写入首部字段 Allow 后返回">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-12T11:18:51.221Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/11/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/HTTP/3.3. 实体首部字段/"/>
 
 
 
 
 
-  <title>归档 | CODE WORLD</title>
+  <title>HTTP实体首部字段详解 | CODE WORLD</title>
   
 
 
@@ -142,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/huchenfei/" target="_blank" rel="noopener"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -266,78 +267,233 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 20 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/HTTP/3.3.%20%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="huchenfei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CODE WORLD">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/11/07/HTTP/0.%20%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80TCP%20IP/" itemprop="url">
-              
-                <span itemprop="name">网络基础TCP/IP</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">HTTP实体首部字段详解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-07T10:29:23+08:00"
-              content="2019-11-07" >
-          11-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T10:29:24+08:00">
+                2019-11-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <blockquote>
+<p>Allow 通知客户端能够支持 Request-URI 指定资源的所有 HTTP 方法</p>
+</blockquote>
+<pre><code>当服务器接收到不支持的 HTTP 方法时
+会以状态码405 Method Not Allowed 作为响应返回
+还会把所有能支持的 HTTP 方法写入首部字段 Allow 后返回</code></pre><hr>
+<a id="more"></a>
+<blockquote>
+<p>Content-Language 告知客户端，实体主体使用的自然语言</p>
+</blockquote>
+<pre><code>Content-Language: zh-CN</code></pre><hr>
+<blockquote>
+<p>Content-Location 给出与报文主体部分相对应的 URI</p>
+</blockquote>
+<pre><code>Content-Location: http://www.hackr.jp/index-ja.html
+
+和首部字段 Location 不同，Content-Location 表示的是报文主体返回资源对应的 URI。</code></pre><hr>
+<blockquote>
+<p>Content-MD5</p>
+</blockquote>
+<pre><code>客户端会对接收的报文主体执行相同的 MD5 算法，然后与首部字段 Content-MD5 的字段值比较
+
+Content-MD5: OGFkZDUwNGVhNGY3N2MxMDIwZmQ4NTBmY2IyTY==</code></pre><hr>
+<blockquote>
+<p>Content-Type 说明了实体主体内对象的媒体类型。</p>
+</blockquote>
+<pre><code>Content-Type: text/html; charset=UTF-8
+
+首部字段 Content-Type 说明了实体主体内对象的媒体类型。
+和首部字段 Accept 一样，字段值用 type/subtype 形式赋值。
+参数 charset 使用 iso-8859-1 或 euc-jp 等字符集进行赋值。</code></pre><hr>
+<blockquote>
+</blockquote>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>求打赏，买辣条吃</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay-new.jpg" alt="huchenfei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/07/HTTP/3.2.%20%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/" rel="next" title="HTTP请求首部字段详解">
+                <i class="fa fa-chevron-left"></i> HTTP请求首部字段详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/07/HTTP/3.4.%20%E4%B8%BAcookie%E6%9C%8D%E5%8A%A1%E7%9A%84%E9%A6%96%E9%83%A8%E5%AD%97%E6%AE%B5/" rel="prev" title="HTTP为cookie服务的首部字段详解">
+                HTTP为cookie服务的首部字段详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/11/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/archives/2019/11/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -345,6 +501,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -599,6 +759,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

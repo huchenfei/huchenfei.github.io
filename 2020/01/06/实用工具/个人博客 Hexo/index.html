@@ -79,16 +79,31 @@
 
 
 
-<meta name="description" content="count(1) 比 count(*) 效率高么  有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件 MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。 在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时">
+<meta name="description" content="创建 github 项目   因为我已经创建过了,所以显示的是项目名称已经存在了，命名规则为 username.github.io  （必须严格按照此格式，username 没有特殊改动的话就是仓库名前面那个Owner）  安装 node.js  安装node.js 直接去 官网 下载合适自己的版本。我下载的是.msi的版本  剩下的就是直接全部按照默认配置就行 安装完成之后 说明安装成功，否则">
 <meta name="keywords" content="HCF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL聚合函数COUNT()的效率对比">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;MySQL%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0COUNT()%E7%9A%84%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94&#x2F;index.html">
+<meta property="og:title" content="个人博客 Hexo">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;06&#x2F;%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7&#x2F;%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%20Hexo&#x2F;index.html">
 <meta property="og:site_name" content="CODE WORLD">
-<meta property="og:description" content="count(1) 比 count(*) 效率高么  有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件 MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。 在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时">
+<meta property="og:description" content="创建 github 项目   因为我已经创建过了,所以显示的是项目名称已经存在了，命名规则为 username.github.io  （必须严格按照此格式，username 没有特殊改动的话就是仓库名前面那个Owner）  安装 node.js  安装node.js 直接去 官网 下载合适自己的版本。我下载的是.msi的版本  剩下的就是直接全部按照默认配置就行 安装完成之后 说明安装成功，否则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-12T11:12:44.746Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029180328504.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019102918072822.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029180832429.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019102918093071.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029181038130.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029165656778.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029181310191.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029181558773.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029170049204.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029181811300.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029181946407.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029182605842.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019102918285769.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029182947461.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-01-06T02:44:05.810Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191029180328504.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70">
 
 
 
@@ -118,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/12/数据库/MySQL聚合函数COUNT()的效率对比/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/01/06/实用工具/个人博客 Hexo/"/>
 
 
 
 
 
-  <title>MySQL聚合函数COUNT()的效率对比 | CODE WORLD</title>
+  <title>个人博客 Hexo | CODE WORLD</title>
   
 
 
@@ -281,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0COUNT()%E7%9A%84%E6%95%88%E7%8E%87%E5%AF%B9%E6%AF%94/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%20Hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huchenfei">
@@ -298,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL聚合函数COUNT()的效率对比</h1>
+          <h1 class="post-title" itemprop="name headline">个人博客 Hexo</h1>
         
 
         <div class="post-meta">
@@ -310,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-12T19:01:16+08:00">
-                2019-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T10:41:31+08:00">
+                2020-01-06
               </time>
             
 
@@ -333,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
+                  <a href="/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">实用工具</span>
                   </a>
                 </span>
 
@@ -371,79 +386,61 @@
 
       
         <blockquote>
-<p>count(1) 比 count(*) 效率高么</p>
+<p>创建 github 项目</p>
 </blockquote>
-<p>有 Where 条件的 count，会根据扫码结果count 一下所有的行数，其性能更依赖于你的 Where 条件</p>
-<p>MyISAM 引擎会把一个表的总行数记录了下来，所以在执行 count(*) 的时候会直接返回数量，执行效率很高。</p>
-<p>在 MySQL 5.5 以后默认引擎切换为 InnoDB，InnoDB 因为增加了版本控制(MVCC)的原因，同时有多个事务访问数据并且有更新操作的时候，每个事务需要维护自己的可见性，那么每个事务查询到的行数也是不同的，所以不能缓存具体的行数，他每次都需要 count 一下所有的行数。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191029180328504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>因为我已经创建过了,所以显示的是项目名称已经存在了，命名规则为 username.github.io  （必须严格按照此格式，username 没有特殊改动的话就是仓库名前面那个Owner）</p>
 <blockquote>
-<p>官方解释</p>
+<p>安装 node.js</p>
 </blockquote>
-<p>InnoDB handles SELECT COUNT(*) and SELECT COUNT(1) operations in the same way. There is no performance difference.</p>
-<p>InnoDB 处理 SELECT COUNT(*) 和 SELECT COUNT(1) 使用荣阳的操作方式,两者没有实质性的区别</p>
+<p>安装node.js 直接去 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">官网</a> 下载合适自己的版本。我下载的是.msi的版本</p>
+<p><img src="https://img-blog.csdnimg.cn/2019102918072822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191029180832429.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>剩下的就是直接全部按照默认配置就行</p>
+<p>安装完成之后<br><img src="https://img-blog.csdnimg.cn/2019102918093071.png" alt="在这里插入图片描述"></p>
+<p>说明安装成功，否则如果显示 node 未不可识别的命令等， 可以去配置环境变量  C:\Program Files\nodejs<br>下图是我的安装目录，可做参考<br><img src="https://img-blog.csdnimg.cn/20191029181038130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <blockquote>
-<p>count的定义</p>
+<p>安装hexo</p>
 </blockquote>
-<a id="more"></a>
-<p>Returns a count of the number of non-NULL values of expr in the rows retrieved by a SELECT statement. The result is a BIGINT value.</p>
-<p>返回 SELECT 语句检索的行中 expr 的非 NULL 值的计数</p>
-<p>也就是说COUNT这个聚合函数，对 SELECT 的结果集进行计数，但是需要参数不为 NULL</p>
-<p>COUNT(*) is somewhat different in that it returns a count of the number of rows retrieved, whether or not they contain NULL values.</p>
-<p>count(<em>) 不同，他不关心这个返回值是否为空都会计算他的count，因为 count(1) 中的 1 是恒真表达式，那么 count(</em>) 还是 count(1) 都是对所有的结果集进行 count，所以他们本质上没有什么区别</p>
+<h2 id="最重要的来了，此步之后所有的命令请使用-cmd-命令窗口完成"><a href="#最重要的来了，此步之后所有的命令请使用-cmd-命令窗口完成" class="headerlink" title="最重要的来了，此步之后所有的命令请使用 cmd 命令窗口完成"></a>最重要的来了，此步之后所有的命令请使用 cmd 命令窗口完成</h2><p>安装hexo第一步，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20191029165656778.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>显示安装完成之后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191029181310191.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>上图就说明安装成功了</p>
+<p>在widnows上随便一个盘上创建一个目录，该目录作为博客的大本营</p>
+<p>到该目录下操作如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191029181558773.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191029170049204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这时候目录下就会出现自动创建的文件夹等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>看看效果<br><img src="https://img-blog.csdnimg.cn/20191029181811300.png" alt="在这里插入图片描述"><br>访问 localhost:4000</p>
+<p>发现已经搭建完毕，但是都是系统的数据</p>
 <blockquote>
-<p>InnoDB的优化</p>
+<p>发布自己的博客</p>
 </blockquote>
-<p>这个地方 InnoDB 本身也做了一些优化，它会使用最小的二级索引来进行 count 的查询优化。如果没有二级索引才会选择聚簇索引，这样的设计单从 IO 的角度就节省了很多开销</p>
-<p>count(column) 也是会遍历整张表，但是不同的是它会拿到 column 的值以后判断是否为空，然后再进行累加，那么如果针对主键需要解析内容，如果是二级索引所以需要再次根据主键获取内容，又是一次 IO 操作，所以 count(column) 的性能肯定不如前两者</p>
-<p>count(*)=count(1)&gt;count(primary key)&gt;count(column)</p>
-<p>count(*) 在查询上依赖于所有的数据集，我们也需要尽量的规避全量 count, 我们针对可预见的 count 查询做适当的缓存，可以是 Redis，也可以是独立的 MySQL count 表，当然无论是哪种方式我们都需要考虑一致性的问题。</p>
-<h4 id="文章中的其他衍生点"><a href="#文章中的其他衍生点" class="headerlink" title="文章中的其他衍生点"></a>文章中的其他衍生点</h4><blockquote>
-<p>什么是mvcc</p>
-</blockquote>
-<p>多版本并发控制，乐观锁的一种实现方式</p>
-<p>MVCC主要是为Repeatable-Read（可重复读）事务隔离级别做的，大多数情况下代替了行锁，实现了对读的非阻塞，读不加锁，读写不冲突。但是每行记录都需要额外的存储空间，需要做更多的行维护和检查工作</p>
-<p>MVCC 并发控制下的读事务一般使用==时间戳==或者事务 ID去标记当前读的数据库的状态。读写并存的时候，写操作会根据目前数据库的状态，创建一个新版本，并发的读则依旧访问旧版本的数据</p>
-<p>MVCC就是用 同一份数据临时保留多版本的方式 的方式，实现并发控制，保证一个读事务永远不会被阻塞</p>
-<p>innodb存储的最基本row中包含一些额外的存储信息，MVCC相关的有： DB_TRX_ID    ，DB_ROLL_PTR，DB_ROW_ID</p>
-<p>DB_TRX_ID 插入或更新行的最后一个事务的事务标识符</p>
-<p>DB_ROLL_PTR 写入回滚段的撤消日志记录，找之前版本的数据就是通过这个</p>
-<p>DB_ROW_ID 行标识.这个用于索引当中</p>
-<p>DB_TRX_ID记录了行的创建的时间</p>
-<p>在insert操作时， “创建时间”=DB_TRX_ID。“删除时间无”；</p>
-<p>在update操作时，复制新增行的“创建时间”=DB_TRX_ID，删除时间无，旧数据行“创建时间”不变，删除时间=该事务DB_TRX_ID；</p>
-<p>在delete操作时，相应数据行的“创建时间”不变，删除时间=该事务的DB_ROW_ID；</p>
-<p>在select操作时，对两者都不修改，只读相应的数据</p>
+<p>停掉本地的博客，到自己博客大本营的根目录下<br><img src="https://img-blog.csdnimg.cn/20191029181946407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>打开该文件进行配置</p>
+<p>基础配置：打开文件位置username.github.io/_config.yml修改几个键值对，下面把几个必须设置的列出来按需求修改，记得保存， 还有注意配置的键值之间一定要有空格。<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">更多设置…</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: ******* //你博客的名字</span><br><span class="line">author: ****** //你的名字</span><br><span class="line">language: zh-Hans //语言 中文</span><br><span class="line">theme: （默认就行，日后可以根据自己需求更改主题） //刚刚安装的主题名称</span><br><span class="line">deploy:</span><br><span class="line">type: git //使用Git 发布</span><br><span class="line">repo: https://github.com/huchenfei/huchenfei.github.io.git // 刚创建的Github仓库</span><br></pre></td></tr></table></figure>
+
+<p>打开 目录 \source_posts<br><img src="https://img-blog.csdnimg.cn/20191029182605842.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这就是博客的所在之地，可以愉快的在里面填写  .md的文章</p>
+<p>填写完成之后使用cmd命令 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br><span class="line">或者</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>本地启动</p>
+<p>没问题之后就可以发布了。</p>
 <blockquote>
-<p>什么是最小二级索引</p>
+<p>发布博客</p>
 </blockquote>
-<p>二级索引是每个叶子节点中包含了不是主键的索引列，紧接着就是主键列的这种索引</p>
-<h5 id="为什么二级索引需要两次索引？"><a href="#为什么二级索引需要两次索引？" class="headerlink" title="为什么二级索引需要两次索引？"></a>为什么二级索引需要两次索引？</h5><p>二级索引的叶子节点保存的不是指向行的物理位置的指针，而是行的主键值，所以二级索引需要在查找一次聚簇索引。 </p>
-<h5 id="叶子节点存储主键值的目的："><a href="#叶子节点存储主键值的目的：" class="headerlink" title="叶子节点存储主键值的目的："></a>叶子节点存储主键值的目的：</h5><p>减少了当出现行移动或者数据分裂时二级索引的维护工作。使用主键值当作指针会让二级索引占用更多的空间，但换来在移动时无须更新二级索引中的主键指针。</p>
-<blockquote>
-<p>什么是聚簇索引</p>
-</blockquote>
-<p>InnoDB的聚簇索引实际上是在同一个结构中保存了B-Tree索引和数据行。 可以将聚簇索引理解为数据库中完整的一张数据表 </p>
-<p>每一个表都有一个聚簇索引，并且只有一个</p>
-<p>聚簇索引的优点： </p>
-<ul>
-<li>将相关数据保存在一起 </li>
-<li>数据访问速度更快 </li>
-<li>使用覆盖索引扫描的查询可以直接使用页节点中的主键值 </li>
-</ul>
-<p>聚簇索引的缺点： </p>
-<ul>
-<li>插入速度依赖插入顺序 </li>
-<li>使全表扫描速度变慢 </li>
-<li>更新聚簇索引列（主键）的代价很高 </li>
-</ul>
-<blockquote>
-<p>如何保证数据一致性</p>
-</blockquote>
-<p>分布式事务</p>
-<blockquote>
-<p>什么是分布式事务? 如何实现分布式事务?</p>
-</blockquote>
-<p>另起一片文章</p>
+<p>安装自动化部署工具</p>
+<p>在自己博客大本营的目录下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>执行如下命令<br><img src="https://img-blog.csdnimg.cn/2019102918285769.png" alt="在这里插入图片描述"></p>
+<p>安装完成之后就可以发布博客了<br>在cmd下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20191029182947461.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NjMxNzk3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这时候打开<br><a href="https://huchenfei.github.io" target="_blank" rel="noopener">https://huchenfei.github.io</a>  访问自己的博客</p>
+<p>每次的文章发布都需要执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>才可以生效</p>
 
       
     </div>
@@ -502,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/07/HTTP/5.%20%E7%94%A8%E6%88%B7%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" rel="next" title="HTTP用户身份认证详解">
-                <i class="fa fa-chevron-left"></i> HTTP用户身份认证详解
+              <a href="/2020/01/06/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/IntelliJ%20IDEA%202019.3%E6%B3%A8%E5%86%8C%E7%A0%81%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%8C%E5%8F%AF%E6%BF%80%E6%B4%BB%E8%87%B3%202089%20%E5%B9%B4%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0~%EF%BC%89/" rel="next" title="IntelliJ IDEA 2019.3注册码（亲测有效，可激活至 2089 年，持续更新~）">
+                <i class="fa fa-chevron-left"></i> IntelliJ IDEA 2019.3注册码（亲测有效，可激活至 2089 年，持续更新~）
               </a>
             
           </div>
@@ -511,10 +508,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/06/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/IntelliJ%20IDEA%202019.3%E6%B3%A8%E5%86%8C%E7%A0%81%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%8C%E5%8F%AF%E6%BF%80%E6%B4%BB%E8%87%B3%202089%20%E5%B9%B4%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0~%EF%BC%89/" rel="prev" title="IntelliJ IDEA 2019.3注册码（亲测有效，可激活至 2089 年，持续更新~）">
-                IntelliJ IDEA 2019.3注册码（亲测有效，可激活至 2089 年，持续更新~） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文章中的其他衍生点"><span class="nav-number">1.</span> <span class="nav-text">文章中的其他衍生点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么二级索引需要两次索引？"><span class="nav-number">1.1.</span> <span class="nav-text">为什么二级索引需要两次索引？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#叶子节点存储主键值的目的："><span class="nav-number">1.2.</span> <span class="nav-text">叶子节点存储主键值的目的：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最重要的来了，此步之后所有的命令请使用-cmd-命令窗口完成"><span class="nav-number">1.</span> <span class="nav-text">最重要的来了，此步之后所有的命令请使用 cmd 命令窗口完成</span></a></li></ol></div>
             
 
           </div>
